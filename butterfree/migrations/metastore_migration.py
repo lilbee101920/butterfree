@@ -2,7 +2,7 @@
 
 from typing import Any, Dict, List
 
-from butterfree.migrations import DatabaseMigration
+from butterfree.migrations.migration import DatabaseMigration
 
 
 class MetastoreMigration(DatabaseMigration):
@@ -10,9 +10,9 @@ class MetastoreMigration(DatabaseMigration):
 
     def create_query(
         self,
-        fs_schema: List[Dict[str, Any]],
-        db_schema: List[Dict[str, Any]],
         table_name: str,
+        db_schema: List[Dict[str, Any]] = None,
+        schema_diff: List[Dict[str, Any]] = None,
     ) -> Any:
         """Create a query regarding Metastore.
 

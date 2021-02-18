@@ -12,9 +12,9 @@ class DatabaseMigration(ABC):
     @abstractmethod
     def create_query(
         self,
-        fs_schema: List[Dict[str, Any]],
-        db_schema: List[Dict[str, Any]],
         table_name: str,
+        db_schema: List[Dict[str, Any]] = None,
+        schema_diff: List[Dict[str, Any]] = None,
     ) -> Any:
         """Create a query regarding a data source.
 
@@ -46,10 +46,10 @@ class DatabaseMigration(ABC):
         pass
 
     def _apply_migration(self, query: str, db_client: Callable) -> None:
-        """Apply the migration in the respective database."""
+        """Apply the migrations in the respective database."""
 
     def _send_logs_to_s3(self) -> None:
-        """Send all migration logs to S3."""
+        """Send all migrations logs to S3."""
         pass
 
     def run(self, pipelines: List[FeatureSetPipeline]) -> None:
