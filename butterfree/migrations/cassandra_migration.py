@@ -2,7 +2,7 @@
 
 from typing import Any, Dict, List
 
-from butterfree.migrations import DatabaseMigration
+from butterfree.migrations.migration import DatabaseMigration
 
 
 class CassandraMigration(DatabaseMigration):
